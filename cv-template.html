@@ -478,13 +478,13 @@
             }
 
             div.innerHTML = `
-      <div class="job-header">
-        <div class="job-title"><h2>${safe(j.position)}</h2></div>
-        <div class="job-dates"><span>${fmtDate(j.start_month_short_name, j.start_year, endMonth, endYear)}</span></div>
-      </div>
-      <div>${safe(j.company_name)}</div>
-      ${j.location ? `<div>Location: ${safe(j.location)}</div>` : ''}
-    `;
+            <div class="job-header">
+                <div class="job-title"><h2>${safe(j.position)}</h2></div>
+                <div class="job-dates"><span>${fmtDate(j.start_month_short_name, j.start_year, endMonth, endYear)}</span></div>
+            </div>
+            <div>${safe(j.company_name)}</div>
+            ${j.location ? `<div>Location: ${safe(j.location)}</div>` : ''}
+            `;
 
             const ul = document.createElement('ul');
             (j.tasks || [])
