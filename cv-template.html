@@ -95,17 +95,17 @@
             font-size: calc(14px * var(--font-scale));
         }
 
-        .divider {
-            position: absolute;
+       .divider {
+            position: fixed;
             left: 50%;
             top: calc(200px + 2rem);
             bottom: 0;
             width: 2px;
             background: var(--primary-color);
+            z-index: 0;
         }
-
-        .divider::before,
-        .divider::after {
+        
+        .divider::before {
             content: "";
             position: absolute;
             left: 50%;
@@ -445,12 +445,14 @@
             li.textContent = s;
             skillsUl.appendChild(li);
         });
+
         const eduWrap = document.getElementById('education');
         (cv.education || []).filter(Boolean).forEach(e => {
             const d = document.createElement('div');
             d.innerHTML = `<div class='label'><h2>${safe(e.description)}</h2></div><div class='institution'>${safe(e.institution)}</div>`;
             eduWrap.appendChild(d);
         });
+
         const expWrap = document.getElementById('experience-list');
         (cv.experience || []).filter(Boolean).forEach(j => {
             const div = document.createElement('div');
@@ -497,6 +499,7 @@
             div.appendChild(ul);
             expWrap.appendChild(div);
         });
+
         const getFontScale = (charCount) => {
             if (charCount > 1600) return 0.65;
             if (charCount > 1300) return 0.7;
